@@ -1,5 +1,6 @@
 // App.js
 import React, { Component } from 'react';
+import styled from 'styled-components';
 class Collatz extends Component { constructor(props)
     {
     super(props)
@@ -23,29 +24,72 @@ class Collatz extends Component { constructor(props)
                 <div className="Collatz">
                      <h2>Collatz Sequence for {number}</h2>
                     <ul>{
-                     outputArr.map((x,ind)=>{ return <li key = {ind} > {x} 
-                     </li>})
+                     outputArr.map((x,ind)=>{ return <SpecialListItem key = {ind} > {x} 
+                     </SpecialListItem>})
                      }
                      </ul> 
                 </div>
             );
             }
     }
+const GridDiv = styled.div`
+        display:grid;
+        grid-template-columns: 30% 70%
+        grid-template-rows: auto;
+        grid-gap: 10px
+        background-color: #eee
+        color: black;
+        margin:20px;
+`;
+
+const LeftColumn = styled.div`
+        grid-column:1;
+        margin: 0.8em;
+`;
+
+const RightColumn = styled.div`
+        grid-column:2;
+        margin: 0.8em;
+
+`;
+
+const EmphaticPar = styled.p`
+        font-style:oblique;
+`;
+
+const VeryEmphaticPar = styled(EmphaticPar)` font-size: 150%;
+`;
+
+const SpecialListItem = styled.li`
+        font-weight: bold;
+        font-size: 90%
+        padding:2px
+        list-stle-type: ${props => props.listStyleType || "square"};
+`;
 
 class App extends Component { 
     render() {
-        const number = 17; const wikilink ='https://en.wikipedia.org/wiki/Collatz_conjecture';
+        const number = 17; 
+        const wikilink ='https://en.wikipedia.org/wiki/Collatz_conjecture';
         return (
-            <div className="App">
-                <h1>Collatz Conjecture</h1>
+            <GridDiv>
+            <LeftColumn>
+            <h1>Collatz Conjecture</h1>
                     <p>The <a href={wikilink}>Collatz Conjecture</a>&nbsp;
                     states that for any positive integer, <i>x</i>,
                     repeatedly applying <i>3x + 1</i> if odd and 
                     <i> x/2</i> if even will eventually lead to 1.</p>
-                <p>No one knows if this is true.</p>
+                <VeryEmphaticPar>No one knows if this is true.</VeryEmphaticPar>
                     
+            </LeftColumn>
+            <RightColumn>
                 <Collatz number={number} /> 
-            </div>
+            </RightColumn>
+            </GridDiv>
+            
+          
+              
+         
         );
     }
 }
