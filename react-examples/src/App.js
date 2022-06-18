@@ -1,5 +1,6 @@
 // App.js
 import React, { Component } from 'react';
+import { GlobalStyle } from './font';
 import styled from 'styled-components';
 class Collatz extends Component { constructor(props)
     {
@@ -57,7 +58,9 @@ const EmphaticPar = styled.p`
         font-style:oblique;
 `;
 
-const VeryEmphaticPar = styled(EmphaticPar)` font-size: 150%;
+const VeryEmphaticPar = styled(EmphaticPar)`
+    font-family: 'Roboto', sans-serif;
+    font-size: 150%;
 `;
 
 const SpecialListItem = styled.li`
@@ -69,7 +72,7 @@ const SpecialListItem = styled.li`
 
 class App extends Component { 
     render() {
-        const number = 17; 
+        const number = 117; 
         const wikilink ='https://en.wikipedia.org/wiki/Collatz_conjecture';
         return (
             <GridDiv>
@@ -79,7 +82,7 @@ class App extends Component {
                     states that for any positive integer, <i>x</i>,
                     repeatedly applying <i>3x + 1</i> if odd and 
                     <i> x/2</i> if even will eventually lead to 1.</p>
-                <VeryEmphaticPar>No one knows if this is true.</VeryEmphaticPar>
+                <VeryEmphaticPar>No one knows if this is true since it is impossible to test for all possible numbers.</VeryEmphaticPar>
                     
             </LeftColumn>
             <RightColumn>
